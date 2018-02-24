@@ -7,10 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5AF5A45204074D20034BFA9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5AF5A44204074D20034BFA9 /* main.cpp */; };
+		C515DE7B2040B3F60086449A /* testPLC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C515DE792040B3F50086449A /* testPLC.cpp */; };
+		C515DE7E2040DD580086449A /* plc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C515DE7C2040DD580086449A /* plc.cpp */; };
+		C515DE812040E2910086449A /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C515DE7F2040E2910086449A /* tag.cpp */; };
+		C5A4B6C8204086F30094E809 /* libplctag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A4B6C7204086F30094E809 /* libplctag.dylib */; };
+		C5A4B6CA204087070094E809 /* libpthread.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A4B6C9204087070094E809 /* libpthread.tbd */; };
+		C5A4B6D820408A1D0094E809 /* libpthread.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A4B6C9204087070094E809 /* libpthread.tbd */; };
+		C5A4B6D920408A2A0094E809 /* libplctag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A4B6C7204086F30094E809 /* libplctag.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C5A4B6CE204089EF0094E809 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		C5AF5A3F204074D10034BFA9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -23,26 +38,112 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C515DE792040B3F50086449A /* testPLC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testPLC.cpp; sourceTree = "<group>"; };
+		C515DE7A2040B3F50086449A /* testPLC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testPLC.hpp; sourceTree = "<group>"; };
+		C515DE7C2040DD580086449A /* plc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plc.cpp; sourceTree = "<group>"; };
+		C515DE7D2040DD580086449A /* plc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plc.hpp; sourceTree = "<group>"; };
+		C515DE7F2040E2910086449A /* tag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
+		C515DE802040E2910086449A /* tag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
+		C5615F9D20407643003C3CCE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C5615FA720407643003C3CCE /* bootstrap.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = bootstrap.sh; sourceTree = "<group>"; };
+		C5615FAA20407643003C3CCE /* Vagrantfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vagrantfile; sourceTree = "<group>"; };
+		C5615FAC20407643003C3CCE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		C5615FB120407737003C3CCE /* libtuxeip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtuxeip.a; path = ../../../../usr/local/lib/libtuxeip.a; sourceTree = "<group>"; };
+		C5A4B6C6204086540094E809 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		C5A4B6C7204086F30094E809 /* libplctag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplctag.dylib; path = ../../../../usr/local/lib/libplctag.dylib; sourceTree = "<group>"; };
+		C5A4B6C9204087070094E809 /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
+		C5A4B6D0204089EF0094E809 /* awsiotmicro800 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = awsiotmicro800; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5AF5A41204074D20034BFA9 /* awsiot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = awsiot; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5AF5A44204074D20034BFA9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C5A4B6CD204089EF0094E809 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A4B6D920408A2A0094E809 /* libplctag.dylib in Frameworks */,
+				C5A4B6D820408A1D0094E809 /* libpthread.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5AF5A3E204074D10034BFA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A4B6CA204087070094E809 /* libpthread.tbd in Frameworks */,
+				C5A4B6C8204086F30094E809 /* libplctag.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5615F9E20407643003C3CCE /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C5615F9F20407643003C3CCE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C515DE792040B3F50086449A /* testPLC.cpp */,
+				C515DE7A2040B3F50086449A /* testPLC.hpp */,
+				C5A4B6C6204086540094E809 /* utils.h */,
+				C515DE7C2040DD580086449A /* plc.cpp */,
+				C515DE7D2040DD580086449A /* plc.hpp */,
+				C515DE7F2040E2910086449A /* tag.cpp */,
+				C515DE802040E2910086449A /* tag.hpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		C5615FA820407643003C3CCE /* doc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		C5615FA920407643003C3CCE /* test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		C5615FAB20407643003C3CCE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		C5615FB020407737003C3CCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4B6C9204087070094E809 /* libpthread.tbd */,
+				C5A4B6C7204086F30094E809 /* libplctag.dylib */,
+				C5615FB120407737003C3CCE /* libtuxeip.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C5AF5A38204074D10034BFA9 = {
 			isa = PBXGroup;
 			children = (
-				C5AF5A43204074D20034BFA9 /* awsiot */,
+				C5615FA720407643003C3CCE /* bootstrap.sh */,
+				C5615FA820407643003C3CCE /* doc */,
+				C5615F9E20407643003C3CCE /* include */,
+				C5615FAB20407643003C3CCE /* lib */,
+				C5615FAC20407643003C3CCE /* Makefile */,
+				C5615F9D20407643003C3CCE /* README.md */,
+				C5615F9F20407643003C3CCE /* src */,
+				C5615FA920407643003C3CCE /* test */,
+				C5615FAA20407643003C3CCE /* Vagrantfile */,
 				C5AF5A42204074D20034BFA9 /* Products */,
+				C5615FB020407737003C3CCE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,21 +151,31 @@
 			isa = PBXGroup;
 			children = (
 				C5AF5A41204074D20034BFA9 /* awsiot */,
+				C5A4B6D0204089EF0094E809 /* awsiotmicro800 */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C5AF5A43204074D20034BFA9 /* awsiot */ = {
-			isa = PBXGroup;
-			children = (
-				C5AF5A44204074D20034BFA9 /* main.cpp */,
-			);
-			path = awsiot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C5A4B6CF204089EF0094E809 /* awsiotmicro800 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5A4B6D4204089EF0094E809 /* Build configuration list for PBXNativeTarget "awsiotmicro800" */;
+			buildPhases = (
+				C5A4B6CC204089EF0094E809 /* Sources */,
+				C5A4B6CD204089EF0094E809 /* Frameworks */,
+				C5A4B6CE204089EF0094E809 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = awsiotmicro800;
+			productName = awsiotmicro800;
+			productReference = C5A4B6D0204089EF0094E809 /* awsiotmicro800 */;
+			productType = "com.apple.product-type.tool";
+		};
 		C5AF5A40204074D10034BFA9 /* awsiot */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5AF5A48204074D20034BFA9 /* Build configuration list for PBXNativeTarget "awsiot" */;
@@ -91,6 +202,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Henry Pump";
 				TargetAttributes = {
+					C5A4B6CF204089EF0094E809 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					C5AF5A40204074D10034BFA9 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -110,26 +225,56 @@
 			projectRoot = "";
 			targets = (
 				C5AF5A40204074D10034BFA9 /* awsiot */,
+				C5A4B6CF204089EF0094E809 /* awsiotmicro800 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C5A4B6CC204089EF0094E809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5AF5A3D204074D10034BFA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5AF5A45204074D20034BFA9 /* main.cpp in Sources */,
+				C515DE812040E2910086449A /* tag.cpp in Sources */,
+				C515DE7B2040B3F60086449A /* testPLC.cpp in Sources */,
+				C515DE7E2040DD580086449A /* plc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C5AF5A46204074D20034BFA9 /* Debug */ = {
+		C5A4B6D5204089EF0094E809 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JNP6SX52H9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C5A4B6D6204089EF0094E809 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JNP6SX52H9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C5AF5A46204074D20034BFA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -174,6 +319,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -184,7 +331,7 @@
 		C5AF5A47204074D20034BFA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -223,6 +370,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -232,8 +381,11 @@
 		C5AF5A49204074D20034BFA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JNP6SX52H9;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -241,8 +393,11 @@
 		C5AF5A4A204074D20034BFA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JNP6SX52H9;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -250,6 +405,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C5A4B6D4204089EF0094E809 /* Build configuration list for PBXNativeTarget "awsiotmicro800" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5A4B6D5204089EF0094E809 /* Debug */,
+				C5A4B6D6204089EF0094E809 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C5AF5A3C204074D10034BFA9 /* Build configuration list for PBXProject "awsiot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

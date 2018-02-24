@@ -1,15 +1,18 @@
 //
-//  main.cpp
+//  test.hpp
 //  awsiot
 //
 //  Created by Patrick McDonagh on 2/23/18.
 //  Copyright © 2018 Henry Pump. All rights reserved.
 //
 
-#include <iostream>
+#ifndef test_hpp
+#define test_hpp
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
-}
+#include <iostream>
+#include "cip.h"
+#include <stdio.h>
+
+using namespace std;
+
+#endif /* test_hpp */
