@@ -42,8 +42,8 @@
 		C515DE7A2040B3F50086449A /* testPLC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testPLC.hpp; sourceTree = "<group>"; };
 		C515DE7C2040DD580086449A /* plc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plc.cpp; sourceTree = "<group>"; };
 		C515DE7D2040DD580086449A /* plc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plc.hpp; sourceTree = "<group>"; };
-		C515DE7F2040E2910086449A /* tag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
-		C515DE802040E2910086449A /* tag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
+		C515DE7F2040E2910086449A /* tag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		C515DE802040E2910086449A /* tag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; usesTabs = 1; };
 		C5615F9D20407643003C3CCE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5615FA720407643003C3CCE /* bootstrap.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = bootstrap.sh; sourceTree = "<group>"; };
 		C5615FAA20407643003C3CCE /* Vagrantfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vagrantfile; sourceTree = "<group>"; };
