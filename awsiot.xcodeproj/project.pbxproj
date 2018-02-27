@@ -48,7 +48,6 @@
 		C5615FA720407643003C3CCE /* bootstrap.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = bootstrap.sh; sourceTree = "<group>"; };
 		C5615FAA20407643003C3CCE /* Vagrantfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vagrantfile; sourceTree = "<group>"; };
 		C5615FAC20407643003C3CCE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		C5615FB120407737003C3CCE /* libtuxeip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtuxeip.a; path = ../../../../usr/local/lib/libtuxeip.a; sourceTree = "<group>"; };
 		C5A4B6C6204086540094E809 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		C5A4B6C7204086F30094E809 /* libplctag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplctag.dylib; path = ../../../../usr/local/lib/libplctag.dylib; sourceTree = "<group>"; };
 		C5A4B6C9204087070094E809 /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
@@ -125,7 +124,6 @@
 			children = (
 				C5A4B6C9204087070094E809 /* libpthread.tbd */,
 				C5A4B6C7204086F30094E809 /* libplctag.dylib */,
-				C5615FB120407737003C3CCE /* libtuxeip.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

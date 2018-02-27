@@ -42,16 +42,17 @@
 using namespace std;
 
 // Define different data types
-#define CIP_DATA_TYPE_BOOL  1
-#define CIP_DATA_TYPE_SINT  2
-#define CIP_DATA_TYPE_USINT 3
-#define CIP_DATA_TYPE_INT   4
-#define CIP_DATA_TYPE_UINT  5
-#define CIP_DATA_TYPE_DINT  6
-#define CIP_DATA_TYPE_UDINT 7
-#define CIP_DATA_TYPE_REAL  8
+#define CIP_DATA_TYPE_BOOL      1
+#define CIP_DATA_TYPE_SINT      2
+#define CIP_DATA_TYPE_USINT     3
+#define CIP_DATA_TYPE_INT       4
+#define CIP_DATA_TYPE_UINT      5
+#define CIP_DATA_TYPE_DINT      6
+#define CIP_DATA_TYPE_UDINT     7
+#define CIP_DATA_TYPE_REAL      8
+#define CIP_DATA_TYPE_STRING    9
 
-#define DATA_TIMEOUT 5000
+#define DATA_TIMEOUT            5000
 
 typedef vector<float> float_vec_t;
 typedef vector<int> int_vec_t;
@@ -92,6 +93,9 @@ static int getTypeSize(int type)
             break;
         case 8: // for REAL
             result = 4;
+            break;
+        case 9: // for string
+            result = 88;
             break;
         default:
             result = 0;

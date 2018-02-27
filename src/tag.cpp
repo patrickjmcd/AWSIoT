@@ -185,6 +185,218 @@ int_vec_t Tag::readIntArray(){
     return results;
 }
 
+void Tag::write(int valToWrite){
+	// INTEGER WRITE
+	int rc;
+	
+	int tag_size = getTypeSize(tagType);
+	/* everything OK? */
+	if(!tagPtr) {
+		fprintf(stderr,"ERROR: Could not create tag!\n");
+		return;
+	}
+	
+	/* let the connect succeed we hope */
+	while(plc_tag_status(tagPtr) == PLCTAG_STATUS_PENDING) {
+		sleep_ms(100);
+	}
+	
+	if(plc_tag_status(tagPtr) != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"Error setting up tag internal state. Error %s\n", plc_tag_decode_error(plc_tag_status(tagPtr)));
+		return;
+	}
+	
+	if (tag_size == 1){
+		if (tagType % 2 == 0){
+			plc_tag_set_int8(tagPtr,0,valToWrite);
+		} else {
+			plc_tag_set_uint8(tagPtr,0,valToWrite);
+		}
+	} else if (tag_size == 2){
+		if (tagType % 2 == 0){
+			plc_tag_set_int16(tagPtr,0,valToWrite);
+		} else {
+			plc_tag_set_uint16(tagPtr,0,valToWrite);
+		}
+	} else if (tag_size == 4){
+		if (tagType % 2 == 0){
+			plc_tag_set_int32(tagPtr,0,valToWrite);
+		} else {
+			plc_tag_set_uint32(tagPtr,0,valToWrite);
+		}
+	} else {
+		plc_tag_set_int32(tagPtr,0,valToWrite);
+	}
+	
+	rc = plc_tag_write(tagPtr, DATA_TIMEOUT);
+	if (verbose) fprintf(stderr,"Wrote %d to %s\n",valToWrite, tagName.c_str());
+	if (verbose) fprintf(stderr,"Got code %d: %s\n",rc, plc_tag_decode_error(rc));
+	
+	if(rc != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+		return;
+	}
+	return;
+}
+
+void Tag::writeArrayMember(int valToWrite, int arrayIndex){
+	// INTEGER ARRAY WRITE
+	int rc;
+	
+	int tag_size = getTypeSize(tagType);
+	/* everything OK? */
+	if(!tagPtr) {
+		fprintf(stderr,"ERROR: Could not create tag!\n");
+		return;
+	}
+	
+	/* let the connect succeed we hope */
+	while(plc_tag_status(tagPtr) == PLCTAG_STATUS_PENDING) {
+		sleep_ms(100);
+	}
+	
+	if(plc_tag_status(tagPtr) != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"Error setting up tag internal state. Error %s\n", plc_tag_decode_error(plc_tag_status(tagPtr)));
+		return;
+	}
+	
+	if (tag_size == 1){
+		if (tagType % 2 == 0){
+			plc_tag_set_int8(tagPtr,(arrayIndex*tag_size),valToWrite);
+		} else {
+			plc_tag_set_uint8(tagPtr,(arrayIndex*tag_size),valToWrite);
+		}
+	} else if (tag_size == 2){
+		if (tagType % 2 == 0){
+			plc_tag_set_int16(tagPtr,(arrayIndex*tag_size),valToWrite);
+		} else {
+			plc_tag_set_uint16(tagPtr,(arrayIndex*tag_size),valToWrite);
+		}
+	} else if (tag_size == 4){
+		if (tagType % 2 == 0){
+			plc_tag_set_int32(tagPtr,(arrayIndex*tag_size),valToWrite);
+		} else {
+			plc_tag_set_uint32(tagPtr,(arrayIndex*tag_size),valToWrite);
+		}
+	} else {
+		plc_tag_set_int32(tagPtr,(arrayIndex*tag_size),valToWrite);
+	}
+
+	rc = plc_tag_write(tagPtr, DATA_TIMEOUT);
+	if (verbose) fprintf(stderr,"Wrote %d to %s[%d]\n",valToWrite, tagName.c_str(), arrayIndex);
+	if (verbose) fprintf(stderr,"Got code %d: %s\n",rc, plc_tag_decode_error(rc));
+
+	if(rc != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+		return;
+	}
+	return;
+}
+
+
+void Tag::write(float valToWrite){
+	// FLOAT WRITE
+	int rc;
+	
+	/* everything OK? */
+	if(!tagPtr) {
+		fprintf(stderr,"ERROR: Could not create tag!\n");
+		return;
+	}
+	
+	/* let the connect succeed we hope */
+	while(plc_tag_status(tagPtr) == PLCTAG_STATUS_PENDING) {
+		sleep_ms(100);
+	}
+	
+	if(plc_tag_status(tagPtr) != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"Error setting up tag internal state. Error %s\n", plc_tag_decode_error(plc_tag_status(tagPtr)));
+		return;
+	}
+	
+	plc_tag_set_float32(tagPtr, 0 ,valToWrite);
+	
+	rc = plc_tag_write(tagPtr, DATA_TIMEOUT);
+	if (verbose) fprintf(stderr,"Wrote %f to %s\n",valToWrite, tagName.c_str());
+	if (verbose) fprintf(stderr,"Got code %d: %s\n",rc, plc_tag_decode_error(rc));
+	
+	if(rc != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+		return;
+	}
+	return;
+}
+
+void Tag::writeArrayMember(float valToWrite, int arrayIndex){
+	// FLOAT ARRAY WRITE
+	int rc;
+	
+//	int tag_size = getTypeSize(tagType);
+	/* everything OK? */
+	if(!tagPtr) {
+		fprintf(stderr,"ERROR: Could not create tag!\n");
+		return;
+	}
+	
+	/* let the connect succeed we hope */
+	while(plc_tag_status(tagPtr) == PLCTAG_STATUS_PENDING) {
+		sleep_ms(100);
+	}
+	
+	if(plc_tag_status(tagPtr) != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"Error setting up tag internal state. Error %s\n", plc_tag_decode_error(plc_tag_status(tagPtr)));
+		return;
+	}
+	
+	plc_tag_set_int32(tagPtr,(arrayIndex*getTypeSize(tagType)),valToWrite);
+//	plc_tag_set_int32(tagPtr,arrayIndex,valToWrite);
+
+	
+	rc = plc_tag_write(tagPtr, DATA_TIMEOUT);
+	if (verbose) fprintf(stderr,"Wrote %f to %s[%d]\n",valToWrite, tagName.c_str(), arrayIndex);
+	if (verbose) fprintf(stderr,"Got code %d: %s\n",rc, plc_tag_decode_error(rc));
+	
+	if(rc != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+		return;
+	}
+	return;
+}
+
+string Tag::readString(){
+	/* everything OK? */
+	if(!tagPtr) {
+		fprintf(stderr,"ERROR: Could not create tag!\n");
+	}
+
+	/* let the connect succeed we hope */
+	while(plc_tag_status(tagPtr) == PLCTAG_STATUS_PENDING) {
+		sleep(1);
+	}
+
+	if(plc_tag_status(tagPtr) != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"Error setting up tag internal state.\n");
+	}
+
+	/* get the data */
+	int rc = plc_tag_read(tagPtr, DATA_TIMEOUT);
+
+	if(rc != PLCTAG_STATUS_OK) {
+		fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
+	}
+
+	int str_size = plc_tag_get_int32(tagPtr, 0);
+	char str[83] = {0};
+	int j;
+	for(j=0; j<str_size; j++) {
+		str[j] = (char)plc_tag_get_uint8(tagPtr,(j+4));
+	}
+	str[j] = (char)0;
+	
+	if(verbose) printf("%s (%d chars) = '%s'\n", tagName.c_str(), str_size, str);
+
+	return str;
+}
 
 Tag::Tag(string tagName_, int tagType_, int elemCount_, string plcPath_, float changeThreshold_, int guaranteeSeconds_, bool writeEnabled_, bool verbose_){
     tagName = tagName_;
@@ -199,6 +411,7 @@ Tag::Tag(string tagName_, int tagType_, int elemCount_, string plcPath_, float c
 	lastTimePushed = chrono::system_clock::now();
     
     string tagPath = getTagPath(plcPath);
+	if (verbose) printf("Tag Path: %s\n", tagPath.c_str());
     tagPtr = plc_tag_create(tagPath.c_str());
     
     if (elemCount > 1){
@@ -224,7 +437,9 @@ int Tag::read(){
         } else {
             floatValue = readFloat();
         }
-    } else {
+	} else if (tagType == CIP_DATA_TYPE_STRING){
+		stringValue = readString();
+	} else {
         if (elemCount > 1){
             intArrayValue = readIntArray();
         } else {
@@ -268,6 +483,10 @@ bool Tag::checkForSend(){
 				return true;
 			}
 		}
+	} else if (tagType == CIP_DATA_TYPE_STRING){
+		if (stringValue.compare(lastStringValue) != 0){
+			return true;
+		}
 	} else {
 		if (elemCount > 1){
 			bool foundSendNeeded = false;
@@ -302,6 +521,8 @@ int Tag::send(){
 		} else {
 			lastFloatValueSent = floatValue;
 		}
+	} else if (tagType == CIP_DATA_TYPE_STRING){
+		lastStringValue = stringValue;
 	} else {
 		if (elemCount > 1) {
 			lastIntArraySent = intArrayValue;
@@ -333,4 +554,8 @@ int Tag::getIntValue(){
 
 int_vec_t Tag::getIntArrayValue(){
 	return intArrayValue;
+}
+
+string Tag::getStringValue(){
+	return stringValue;
 }

@@ -19,20 +19,23 @@ int main(int argc, char *argv[])
         }
     
     PLC maxWaterSystemPlc = PLC("ab_eip", "10.20.4.36", "compactlogix", 1, 0, DATA_TIMEOUT);
-    
     PLC pioneerFracSkidPlc = PLC("ab_eip", "10.20.4.40", "micro800", 1, 0, DATA_TIMEOUT);
+    
     Tag fluidLevelTag = Tag("val_FluidLevel", CIP_DATA_TYPE_REAL, 1, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
     Tag intakePressureTag = Tag("val_IntakePressure", CIP_DATA_TYPE_REAL, 1, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
     Tag intakeTemperatureTag = Tag("val_IntakeTemperature", CIP_DATA_TYPE_REAL, 1, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
     Tag alarmDowntimeSecTag = Tag("cfg_AlarmDowntimeSec", CIP_DATA_TYPE_DINT, 1, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
     Tag rpFlowmeterTag = Tag("rp_Flowmeter", CIP_DATA_TYPE_BOOL, 1, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
     Tag energyCostTag = Tag("Energy_Cost", CIP_DATA_TYPE_REAL, 30, maxWaterSystemPlc.getCpuPath(), 5.0, 600, false, verbose);
+    Tag downholeStatusTag = Tag("Downhole_Sensor_Status", CIP_DATA_TYPE_STRING, 1, maxWaterSystemPlc.getCpuPath(), 0.0, 600, false, verbose);
+    Tag distanceToIntakeTag = Tag("cfg_DHSensorDistToIntake", CIP_DATA_TYPE_REAL, 1, maxWaterSystemPlc.getCpuPath(), 0.1, 600, true, verbose);
     
     Tag flowTotalizerBTag = Tag("val_FlowTotalizerB", CIP_DATA_TYPE_REAL, 1, pioneerFracSkidPlc.getCpuPath(), 5.0, 600, false, verbose);
     
-    float fluidLevel, intakePressure, intakeTemperature;
+    float fluidLevel, intakePressure, intakeTemperature, distanceToIntake;
     int alarmDowntimeSec, rpFlowmeter;
     float_vec_t energyCost;
+    string downholeStatus;
     float flowTotalizerB;
     
     int loops = 0;
@@ -43,6 +46,8 @@ int main(int argc, char *argv[])
         if (alarmDowntimeSecTag.checkForSend()) alarmDowntimeSecTag.send();
         if (rpFlowmeterTag.checkForSend()) rpFlowmeterTag.send();
         if (energyCostTag.checkForSend()) energyCostTag.send();
+        if (downholeStatusTag.checkForSend()) downholeStatusTag.send();
+        if (distanceToIntakeTag.checkForSend()) distanceToIntakeTag.send();
         
         if (flowTotalizerBTag.checkForSend()) flowTotalizerBTag.send();
         
@@ -52,6 +57,8 @@ int main(int argc, char *argv[])
         
         alarmDowntimeSec = alarmDowntimeSecTag.getIntValue();
         rpFlowmeter = rpFlowmeterTag.getIntValue();
+        downholeStatus = downholeStatusTag.getStringValue();
+        distanceToIntake = distanceToIntakeTag.getFloatValue();
         
         energyCost = energyCostTag.getFloatArrayValue();
         
@@ -68,48 +75,22 @@ int main(int argc, char *argv[])
             for(int i = 0; i < energyCost.size(); i++){
                 printf("Energy Cost [%d] = %f\n", i, energyCost[i]);
             }
+            printf("DH Status = %s\n--\n", downholeStatus.c_str());
+            printf("Distance to Intake = %f\n--\n", distanceToIntake);
             printf("--\nPIONEER FRAC SKID\n--\n");
             printf("Flow Totalizer B = %f\n--\n", flowTotalizerB);
             printf("--\n");
         }
         
+        srand (static_cast <unsigned> (time(0)));
+        float randFloat = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/100.0));
+//        alarmDowntimeSecTag.write(600);
+        distanceToIntakeTag.write(randFloat);
+        energyCostTag.writeArrayMember((float (100.0 + loops)), 20);
+        
         loops++;
         
     }
-
-    
-    // /* now test a write */
-    // for(i=0; i < ELEM_COUNT; i++) {
-    //     int32_t val = plc_tag_get_int32(tag,(i*ELEM_SIZE));
-    //
-    //     val = val+1;
-    //
-    //     fprintf(stderr,"Setting element %d to %d\n",i,val);
-    //
-    //     plc_tag_set_int32(tag,(i*ELEM_SIZE),val);
-    // }
-    //
-    // rc = plc_tag_write(tag, DATA_TIMEOUT);
-    //
-    // if(rc != PLCTAG_STATUS_OK) {
-    //     fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
-    //     return 0;
-    // }
-    //
-    //
-    // /* get the data again*/
-    // rc = plc_tag_read(tag, DATA_TIMEOUT);
-    //
-    // if(rc != PLCTAG_STATUS_OK) {
-    //     fprintf(stderr,"ERROR: Unable to read the data! Got error code %d: %s\n",rc, plc_tag_decode_error(rc));
-    //     return 0;
-    // }
-    //
-    // /* print out the data */
-    // for(i=0; i < ELEM_COUNT; i++) {
-    //     fprintf(stderr,"data[%d]=%d\n",i,plc_tag_get_int32(tag,(i*ELEM_SIZE)));
-    // }
-    
     
     return 0;
 }

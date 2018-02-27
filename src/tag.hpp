@@ -41,12 +41,17 @@ class Tag{
     int intValue;               // current integer value
     int_vec_t lastIntArraySent; // last integer array pushed
     int_vec_t intArrayValue;    // current integer array value
+	string stringValue;			// current string value
+	string lastStringValue;		// last string value pushed
     
     float readFloat();
     float_vec_t readFloatArray();
     int readInt();
     int_vec_t readIntArray();
 	bool forceSend;
+	string readString();
+	
+	
     
     
     
@@ -64,9 +69,6 @@ public:
     
     ~Tag();
     string getTagPath(string cpuPath);
-//    int getTagType();
-//    int getElemCount();
-//    plc_tag getTagPtr();
     int read();
 	bool checkForSend();
 	int send();
@@ -74,6 +76,12 @@ public:
 	float_vec_t getFloatArrayValue();
 	int getIntValue();
 	int_vec_t getIntArrayValue();
+	string getStringValue();
+	
+	void write(int valToWrite);
+	void writeArrayMember(int valToWrite, int arrayIndex);
+	void write(float valToWrite);
+	void writeArrayMember(float valToWrite, int arrayIndex);
 	
     
     
